@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Home, Hash, Smartphone, Type, Sun, ShieldCheck, Gem } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Modal from './Modal';
 import './ServiceCard.css';
 
 const iconMap = { Home, Hash, Smartphone, Type, Sun, ShieldCheck, Gem };
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 const ServiceCard = ({ service }) => {
   const [quickViewOpen, setQuickViewOpen] = useState(false);
@@ -12,7 +17,11 @@ const ServiceCard = ({ service }) => {
 
   return (
     <>
-      <div className="service-card">
+      <motion.div 
+        className="service-card" 
+        onClick={() => setQuickViewOpen(true)}
+        variants={itemVariants}
+      >
         <div className="service-card-icon">
           <Icon size={32} />
         </div>
@@ -20,14 +29,11 @@ const ServiceCard = ({ service }) => {
         <p className="service-card-desc">{service.shortDescription}</p>
         
         <div className="service-card-actions">
-          <button className="btn-quick-view" onClick={() => setQuickViewOpen(true)}>
-            Quick View
-          </button>
-          <Link to={`/services/${service.id}`} className="btn-read-more">
-            Read More <ArrowRight size={16} />
-          </Link>
+          <span className="btn-read-more">
+            View Details <ArrowRight size={16} className="arrow-icon" />
+          </span>
         </div>
-      </div>
+      </motion.div>
 
       <Modal isOpen={quickViewOpen} onClose={() => setQuickViewOpen(false)} title={service.title}>
         <div className="quick-view-content">
@@ -43,9 +49,20 @@ const ServiceCard = ({ service }) => {
             </ul>
           </div>
           
+          <div className="quick-view-section">
+            <h4>Ideal For:</h4>
+            <ul>
+              {service.suitableFor.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          </div>
+          
           <div className="quick-view-buttons">
-            <Link to="/book-consultation" className="btn btn-primary">Book Consultation</Link>
-            <a href="https://wa.me/9912553575" target="_blank" rel="noreferrer" className="btn btn-whatsapp">WhatsApp Now</a>
+            <a href="https://wa.me/9912553575" target="_blank" rel="noreferrer" className="btn btn-whatsapp w-full" style={{textAlign: 'center'}}>
+              CONSULT NOW ON WHATSAPP
+            </a>
+            <a href="tel:9912531255" className="btn btn-primary w-full" style={{textAlign: 'center'}}>
+              SCHEDULE CALL
+            </a>
           </div>
         </div>
       </Modal>
