@@ -50,6 +50,7 @@ const Header = () => {
             )}
           </div>
           
+          <Link to="/why-us" className={`nav-link ${location.pathname === '/why-us' ? 'active' : ''}`}>Why Us</Link>
           <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
         </nav>
 
@@ -87,6 +88,7 @@ const Header = () => {
             )}
           </div>
           
+          <Link to="/why-us" className="mobile-link">Why Us</Link>
           <Link to="/contact" className="mobile-link">Contact</Link>
           <Link to="/book-consultation" className="mobile-link btn-mobile-book">
             <Calendar size={18} /> Book Consultation
