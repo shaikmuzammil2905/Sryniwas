@@ -1,0 +1,213 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-bg-main);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(252, 252, 252, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+.header-actions {
+  display: none;
+}
+
+.mobile-toggle {
+  display: block;
+  color: var(--color-primary);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--color-bg-main);
+  padding: 24px;
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-link {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-primary);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-dropdown-items {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.mobile-dropdown-item {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform var(--transition-fast);
+}
+
+.btn-mobile-book {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 4px;
+  padding: 14px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (min-width: 992px) {
+  .header {
+    height: var(--header-height);
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: var(--color-primary);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-fast);
+  }
+
+  .nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background-color: var(--color-bg-main);
+    min-width: 260px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    padding: 12px 0;
+    border: 1px solid var(--color-border);
+    z-index: 10;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 12px 24px;
+    color: var(--color-text-dark);
+    font-size: 15px;
+    transition: all var(--transition-fast);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-primary);
+    padding-left: 28px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--color-primary);
+    background-color: var(--color-bg-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .action-icon:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .action-icon.whatsapp {
+    background-color: #e8f7ed;
+    color: var(--color-whatsapp);
+  }
+
+  .action-icon.whatsapp:hover {
+    background-color: var(--color-whatsapp);
+    color: white;
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+}
