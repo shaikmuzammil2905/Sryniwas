@@ -20,6 +20,7 @@ export const servicesData = [
     ],
     benefits: ['Enhanced prosperity', 'Better health', 'Harmonious relationships'],
     icon: 'Home',
+    image: '/images/vastu_consultation.jpg',
     ctaText: 'BOOK VASTU AUDIT'
   },
   {
@@ -43,6 +44,7 @@ export const servicesData = [
     ],
     benefits: ['Personalized Life Path & Destiny Report'],
     icon: 'Hash',
+    image: '/images/numerology.jpg',
     ctaText: 'GET NUMEROLOGY CONSULTATION'
   },
   {
@@ -67,6 +69,7 @@ export const servicesData = [
     ],
     benefits: ['Improved professional connections', 'Better business growth', 'Positive communication'],
     icon: 'Smartphone',
+    image: '/images/mobile_numerology.jpg',
     ctaText: 'CHECK MY MOBILE NUMBER'
   },
   {
@@ -92,6 +95,7 @@ export const servicesData = [
     ],
     benefits: ['Attract better opportunities', 'Brand success', 'Removal of energetic blockages'],
     icon: 'Type',
+    image: '/images/name_correction.jpg',
     ctaText: 'ANALYZE MY NAME'
   },
   {
@@ -115,6 +119,7 @@ export const servicesData = [
     ],
     benefits: ['Identify energy blockages', 'Stress relief guidance', 'Spiritual balance'],
     icon: 'Sun',
+    image: '/images/aura_analysis.jpg',
     ctaText: 'BOOK AURA CONSULTATION'
   },
   {
@@ -135,6 +140,7 @@ export const servicesData = [
     ],
     benefits: ['Neutralize negative energy', 'Cost-effective corrections', 'Promote peace'],
     icon: 'ShieldCheck',
+    image: '/images/vastu_remedies.jpg',
     ctaText: 'EXPLORE VASTU REMEDIES'
   },
   {
@@ -155,6 +161,7 @@ export const servicesData = [
     ],
     benefits: ['Enhanced personal energy', 'Astrological balance', 'Spiritual protection'],
     icon: 'Gem',
+    image: '/images/gemstone_bracelet_guidance.jpg',
     ctaText: 'EXPLORE GUIDANCE'
   }
 ];

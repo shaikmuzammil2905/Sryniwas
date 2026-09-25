@@ -8,6 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: var(--header-height);
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .modal-backdrop {
   position: absolute;
@@ -22,8 +26,8 @@
   position: relative;
   background-color: var(--color-bg-main);
   width: 100%;
-  max-width: 800px;
-  max-height: 90vh;
+  max-width: 900px;
+  max-height: calc(100vh - var(--header-height) - 40px);
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -72,9 +76,10 @@
 @media (max-width: 768px) {
   .modal-overlay {
     align-items: flex-end; /* Align drawer to bottom on mobile */
+    padding: var(--header-height) 0 0 0;
   }
   .modal-content {
-    max-height: 85vh;
+    max-height: calc(100vh - var(--header-height) - 20px);
     border-radius: 20px 20px 0 0; /* Only top corners rounded */
     margin: 0;
     max-width: 100%;

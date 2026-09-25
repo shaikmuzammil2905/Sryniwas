@@ -1,7 +1,6 @@
 .service-card {
   background-color: white;
   border-radius: 12px;
-  padding: 32px;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
   transition: all var(--transition-normal);
@@ -9,29 +8,57 @@
   flex-direction: column;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-md), 0 0 20px rgba(82, 42, 115, 0.1);
   border-color: var(--color-secondary);
-  background: linear-gradient(to bottom, #ffffff, #faf8fd);
+}
+.service-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 60%; /* 5:3 Aspect Ratio */
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+.service-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+.service-card:hover .service-card-image {
+  transform: scale(1.05);
 }
 .service-card-icon {
-  width: 64px;
-  height: 64px;
-  background-color: var(--color-bg-secondary);
-  color: var(--color-primary);
+  position: absolute;
+  bottom: -24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+  border: 3px solid white;
+  z-index: 2;
   transition: all var(--transition-normal);
 }
 .service-card:hover .service-card-icon {
-  background-color: var(--color-primary);
-  color: white;
-  transform: scale(1.05);
+  background-color: var(--color-accent);
+}
+.service-card-content {
+  padding: 36px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .service-card-title {
   font-size: 20px;
@@ -72,14 +99,24 @@
 .quick-view-content {
   display: flex;
   flex-direction: column;
+}
+.quick-view-image-wrap {
+  width: calc(100% + 48px); /* Negative margin counter */
+  margin-left: -24px;
+  margin-top: -24px;
+  margin-right: -24px;
+  margin-bottom: 20px;
+  height: 250px;
+}
+.quick-view-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.quick-view-text-content {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-}
-.quick-view-icon-wrap {
-  text-align: center;
-  padding: 10px 0;
-}
-.quick-view-icon {
-  color: var(--color-primary);
 }
 .quick-view-desc {
   font-size: 16px;

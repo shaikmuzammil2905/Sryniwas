@@ -19,7 +19,7 @@ const ServiceDetail = () => {
 
   return (
     <div className="page-wrapper">
-      <div className="service-hero">
+      <div className="service-hero" style={{backgroundImage: `linear-gradient(rgba(59, 29, 82, 0.8), rgba(59, 29, 82, 0.9)), url(${service.image})`}}>
         <div className="container">
           <h1 className="service-hero-title">{service.title}</h1>
         </div>
