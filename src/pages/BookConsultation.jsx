@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { servicesData } from '../data/services';
 import Modal from '../components/Modal';
+import './Contact.css';
 
 const BookConsultation = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false);
@@ -31,7 +32,7 @@ const BookConsultation = () => {
               <input type="text" name="name" required value={formData.name} onChange={handleChange} />
             </div>
             
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
+            <div className="form-row-2">
               <div className="form-group">
                 <label>Phone Number *</label>
                 <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} />
@@ -55,7 +56,7 @@ const BookConsultation = () => {
               </select>
             </div>
 
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
+            <div className="form-row-2">
               <div className="form-group">
                 <label>Preferred Date *</label>
                 <input type="date" name="date" required value={formData.date} onChange={handleChange} />

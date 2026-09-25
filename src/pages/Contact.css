@@ -84,7 +84,7 @@
 
 .contact-form-wrapper {
   background: white;
-  padding: 40px;
+  padding: 24px;
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
@@ -100,8 +100,11 @@
 }
 .contact-form input,
 .contact-form textarea,
-.contact-form .form-select {
+.contact-form .form-select,
+.contact-form select {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px 16px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
@@ -112,7 +115,8 @@
 }
 .contact-form input:focus,
 .contact-form textarea:focus,
-.contact-form .form-select:focus {
+.contact-form .form-select:focus,
+.contact-form select:focus {
   outline: none;
   border-color: var(--color-primary);
   background-color: white;
@@ -120,6 +124,12 @@
 .btn-lg {
   padding: 14px 32px;
   font-size: 16px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 /* How It Works */
@@ -226,10 +236,16 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
   }
+  .contact-form-wrapper {
+    padding: 40px;
+  }
   .steps-grid {
     grid-template-columns: repeat(4, 1fr);
   }
   .cta-buttons {
     flex-direction: row;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr 1fr;
   }
 }
