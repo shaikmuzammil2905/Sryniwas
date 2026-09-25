@@ -12,7 +12,9 @@ const SplashScreen = ({ finishLoading }) => {
 
   return (
     <div className={`splash-screen ${isFadingOut ? 'fade-out' : ''}`}>
-      <img src="/image copy 2.png" alt="The Vastu Guru" className="splash-logo" />
+      <div className="splash-logo-container">
+        <img src="/image copy 2.png" alt="The Vastu Guru" className="splash-logo" />
+      </div>
       <div className="splash-loader"></div>
     </div>
   );

@@ -1,58 +1,175 @@
-.about-container {
-  padding: 80px 24px;
+.about-page {
+  padding-top: var(--header-height);
+}
+.about-hero {
+  padding: 80px 0;
+  text-align: center;
+  background-color: var(--color-bg-main);
+}
+.about-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.about-title {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+.about-subtitle {
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+  font-family: var(--font-heading);
+  font-style: italic;
+}
+.about-desc {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+.bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.text-light {
+  color: white !important;
+}
+.section-heading {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+.section-subtext {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
+}
+.about-philosophy, .about-approach, .about-focus, .about-difference {
+  padding: 80px 0;
+}
+.about-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
 }
-.about-title {
-  font-size: 40px;
-  margin-bottom: 24px;
-}
-.about-desc {
-  font-size: 18px;
+.about-text-content p {
+  font-size: 16px;
   color: var(--color-text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   line-height: 1.8;
 }
-.focus-section {
-  margin-top: 40px;
-}
-.focus-section h2 {
-  font-family: var(--font-body);
-  font-size: 24px;
-  margin-bottom: 24px;
-}
-.focus-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.focus-item {
-  background-color: var(--color-primary);
-  color: white;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 500;
-  font-size: 18px;
-  box-shadow: var(--shadow-sm);
-}
 .about-image-wrapper {
-  background-color: var(--color-bg-secondary);
   border-radius: 16px;
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
-.about-image {
-  max-width: 100%;
+.about-feature-img {
+  width: 100%;
   height: auto;
+  display: block;
 }
-@media (min-width: 992px) {
-  .about-container {
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.process-step {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  border-left: 4px solid var(--color-accent);
+  text-align: left;
+}
+.step-number {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-primary-light);
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+.process-step h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.process-step p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+.focus-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.focus-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal);
+}
+.focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.focus-icon {
+  color: var(--color-accent);
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+.difference-list {
+  margin-top: 24px;
+}
+.difference-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: var(--color-text-muted);
+}
+.list-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.about-commitment {
+  padding: 80px 0;
+}
+.commitment-text {
+  font-size: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+.mt-4 {
+  margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
+  }
+  .about-grid.reverse .about-image-wrapper {
+    order: -1;
+  }
+  .process-timeline {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .process-step {
+    flex: 1;
+    min-width: 200px;
+    border-left: none;
+    border-top: 4px solid var(--color-accent);
+  }
+  .focus-cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
