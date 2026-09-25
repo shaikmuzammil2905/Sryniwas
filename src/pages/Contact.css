@@ -1,5 +1,5 @@
 .contact-page {
-  padding-top: var(--header-height);
+  padding-top: var(--mobile-header-height, 64px);
 }
 .contact-hero {
   padding: 80px 0;
@@ -233,6 +233,9 @@
 }
 
 @media (min-width: 768px) {
+  .contact-page {
+    padding-top: var(--header-height);
+  }
   .contact-grid {
     grid-template-columns: 1fr 1fr;
     gap: 60px;

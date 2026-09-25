@@ -18,8 +18,8 @@ const BookConsultation = () => {
   };
 
   return (
-    <div className="page-wrapper">
-      <div className="container" style={{maxWidth: '800px', paddingTop: '60px', paddingBottom: '80px'}}>
+    <div className="page-wrapper contact-page">
+      <div className="container" style={{maxWidth: '800px', paddingTop: '40px', paddingBottom: '80px'}}>
         <div className="text-center" style={{textAlign: 'center', marginBottom: '40px'}}>
           <h1 className="section-title">Book a Consultation</h1>
           <p className="section-desc">Schedule your session with The Vastu Guru for personalized guidance.</p>
