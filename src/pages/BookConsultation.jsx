@@ -80,7 +80,7 @@ const BookConsultation = () => {
               <textarea name="message" rows="3" value={formData.message} onChange={handleChange}></textarea>
             </div>
 
-            <button type="submit" className="btn btn-gold w-full" style={{fontSize: '18px', padding: '16px'}}>BOOK CONSULTATION</button>
+            <button type="submit" className="btn btn-secondary w-full" style={{fontSize: '18px', padding: '16px'}}>BOOK CONSULTATION</button>
           </form>
         </div>
       </div>

@@ -122,7 +122,7 @@ const About = () => {
           <p className="commitment-text">
             We are dedicated to bringing clarity, positive energy, and holistic balance to your life through the profound sciences of Vastu and Numerology.
           </p>
-          <a href="/contact" className="btn btn-gold mt-4">Book Your Consultation</a>
+          <a href="/contact" className="btn btn-secondary mt-4">Book Your Consultation</a>
         </div>
       </section>
     </div>

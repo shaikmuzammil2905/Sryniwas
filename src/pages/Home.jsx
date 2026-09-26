@@ -61,7 +61,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div className="hero-actions" variants={fadeInUp}>
-              <Link to="/book-consultation" className="btn btn-gold w-mobile-full">Book Consultation</Link>
+              <Link to="/book-consultation" className="btn btn-secondary w-mobile-full">Book Consultation</Link>
               <a href="https://wa.me/9912553575" target="_blank" rel="noreferrer" className="btn btn-whatsapp w-mobile-full">WhatsApp Now</a>
             </motion.div>
           </motion.div>

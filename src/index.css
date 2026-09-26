@@ -2,20 +2,27 @@
 
 :root {
   /* Colors */
-  --color-primary: #3b1d52; /* Deep royal purple */
-  --color-primary-light: #522a73;
-  --color-secondary: #e6e0f0; /* Soft lavender */
-  --color-accent: #d4af37; /* Premium gold */
-  --color-accent-hover: #b5952f;
-  --color-whatsapp: #25D366;
-  --color-whatsapp-hover: #1eb355;
-  --color-bg-main: #fcfcfc; /* Off-white */
-  --color-bg-secondary: #f4f0fa;
-  --color-text-dark: #2a2a2a;
-  --color-text-light: #fdfdfd;
-  --color-text-muted: #6b6b6b;
-  --color-border: #e0dbe8;
-  
+  --color-white: #FFFFFF;
+  --color-light-blue: #67C7F2;
+  --color-light-blue-soft: #EAF8FF;
+  --color-light-blue-medium: #BDEAFF;
+  --color-green: #20B96B;
+  --color-green-soft: #E9FAF1;
+
+  --color-primary: var(--color-light-blue);
+  --color-primary-light: var(--color-light-blue-medium);
+  --color-secondary: var(--color-light-blue-soft);
+  --color-accent: var(--color-green);
+  --color-accent-hover: #1aa05a;
+  --color-whatsapp: var(--color-green);
+  --color-whatsapp-hover: #1aa05a;
+  --color-bg-main: var(--color-white);
+  --color-bg-secondary: var(--color-white);
+  --color-text-dark: #333333; /* Dark text for readability */
+  --color-text-light: var(--color-white);
+  --color-text-muted: #555555;
+  --color-border: var(--color-light-blue);
+
   /* Typography */
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
@@ -32,9 +39,9 @@
   
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(59, 29, 82, 0.08);
-  --shadow-lg: 0 12px 24px rgba(59, 29, 82, 0.12);
-  --shadow-gold: 0 4px 12px rgba(212, 175, 55, 0.2);
+  --shadow-md: 0 4px 12px rgba(103, 199, 242, 0.15);
+  --shadow-lg: 0 12px 24px rgba(103, 199, 242, 0.2);
+  --shadow-accent: 0 4px 12px rgba(32, 185, 107, 0.2);
 }
 
 * {
@@ -112,15 +119,15 @@ ul {
   box-shadow: var(--shadow-md);
 }
 
-.btn-gold {
+.btn-secondary {
   background-color: var(--color-accent);
   color: var(--color-text-light);
 }
 
-.btn-gold:hover {
+.btn-secondary:hover {
   background-color: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-outline {
@@ -142,7 +149,7 @@ ul {
 .btn-whatsapp:hover {
   background-color: var(--color-whatsapp-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 12px rgba(32, 185, 107, 0.3);
 }
 
 /* Animations */

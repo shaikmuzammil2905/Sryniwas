@@ -169,7 +169,7 @@ const WhyUs = () => {
         <div className="container">
           <h2>Ready to Transform Your Space?</h2>
           <p>Book a session with The Vastu Guru today and step into a harmonious future.</p>
-          <a href="/contact" className="btn btn-gold mt-4">Consult Now</a>
+          <a href="/contact" className="btn btn-secondary mt-4">Consult Now</a>
         </div>
       </section>
     </div>
