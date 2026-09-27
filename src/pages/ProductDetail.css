@@ -1,6 +1,15 @@
-.product-detail-page {
+.product-detail-page,
+.product-not-found-page {
   background-color: #fafcfd;
+  padding-top: var(--mobile-header-height, 64px);
   padding-bottom: 70px;
+}
+
+@media (min-width: 992px) {
+  .product-detail-page,
+  .product-not-found-page {
+    padding-top: var(--header-height, 80px);
+  }
 }
 
 /* Breadcrumbs */

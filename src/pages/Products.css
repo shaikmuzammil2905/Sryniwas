@@ -1,11 +1,18 @@
 .products-page {
   background-color: #fafdfd;
+  padding-top: var(--mobile-header-height, 64px);
+}
+
+@media (min-width: 992px) {
+  .products-page {
+    padding-top: var(--header-height, 80px);
+  }
 }
 
 /* Hero Section */
 .products-hero {
   background: linear-gradient(135deg, #eaf8ff 0%, #ffffff 50%, #f4fbf7 100%);
-  padding: 60px 0 45px 0;
+  padding: 44px 0 36px 0;
   border-bottom: 1px solid var(--color-light-blue-medium);
   text-align: center;
   position: relative;
@@ -19,33 +26,44 @@
 .products-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  background: var(--color-white);
-  color: var(--color-primary);
-  border: 1px solid var(--color-light-blue);
-  padding: 6px 18px;
+  background: #ffffff;
+  color: #0369a1;
+  border: 1.5px solid #bae6fd;
+  padding: 8px 20px;
   border-radius: 30px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   margin-bottom: 18px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(3, 105, 161, 0.08);
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+.products-badge svg {
+  color: #0284c7;
+  flex-shrink: 0;
 }
 
 .products-hero-title {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 700;
-  color: var(--color-text-dark);
+  color: #0f172a;
   margin-bottom: 16px;
   line-height: 1.25;
 }
 
 .products-hero-subtitle {
   font-size: 16px;
-  color: var(--color-text-muted);
+  color: #334155;
   line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-trust-bar {
@@ -53,8 +71,8 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 24px;
-  padding-top: 14px;
+  gap: 16px;
+  padding-top: 10px;
 }
 
 .trust-item {
@@ -62,16 +80,56 @@
   align-items: center;
   gap: 8px;
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--color-text-dark);
-  background: rgba(255, 255, 255, 0.85);
-  padding: 8px 16px;
+  font-weight: 600;
+  color: #1e293b;
+  background: #ffffff;
+  padding: 8px 18px;
   border-radius: 20px;
-  border: 1px solid #e1eff8;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .trust-icon {
   color: var(--color-green);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .products-hero {
+    padding: 24px 0 28px 0;
+  }
+
+  .products-badge {
+    font-size: 11.5px;
+    padding: 6px 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+
+  .products-hero-title {
+    font-size: 26px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .products-hero-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 0 8px;
+  }
+
+  .hero-trust-bar {
+    gap: 10px;
+  }
+
+  .trust-item {
+    font-size: 12.5px;
+    padding: 7px 14px;
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
 }
 
 /* Main Section & Controls */
