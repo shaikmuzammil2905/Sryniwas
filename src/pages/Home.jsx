@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp, Search, Eye, Compass, HeartHandshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { servicesData } from '../data/services';
+import { productsData } from '../data/products';
 import ServiceCard from '../components/ServiceCard';
+import ProductCard from '../components/ProductCard';
 import './Home.css';
 
 const faqs = [
@@ -132,6 +134,44 @@ const Home = () => {
               <ServiceCard key={service.id} service={service} />
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Sacred Products Section */}
+      <section className="featured-products-home-section" style={{ padding: '70px 0', background: 'linear-gradient(180deg, #ffffff 0%, #f4fbf7 100%)', borderTop: '1px solid #eaf2f8', borderBottom: '1px solid #eaf2f8' }}>
+        <div className="container">
+          <motion.div 
+            className="section-header center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            style={{ marginBottom: '40px' }}
+          >
+            <motion.h2 className="section-title" variants={fadeInUp}>SACRED ENERGIZED PRODUCTS</motion.h2>
+            <motion.p className="section-subtitle" variants={fadeInUp}>Vedic Talismans, Zodiac Bracelets & Crystals</motion.p>
+            <motion.p className="section-desc" variants={fadeInUp} style={{ maxWidth: '640px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
+              Handpicked natural healing stones consecrated through sacred Vedic rituals to bring protection, positive energy and prosperity.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="products-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
+            {productsData.slice(0, 4).map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </motion.div>
+
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link to="/products" className="btn btn-primary" style={{ padding: '14px 36px', fontSize: '15px' }}>
+              Explore All 19+ Sacred Products →
+            </Link>
+          </div>
         </div>
       </section>
 
