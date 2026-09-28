@@ -98,6 +98,8 @@
   max-height: 380px;
   object-fit: contain;
   transition: transform var(--transition-normal);
+  opacity: 0.82;
+  filter: blur(4px) brightness(1.12) contrast(0.88);
 }
 
 .product-main-image-card:hover .product-detail-img {
