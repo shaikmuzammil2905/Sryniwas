@@ -1,17 +1,50 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Sparkles, ShieldCheck, Truck, PhoneCall, MessageCircle, ShoppingBag } from 'lucide-react';
+import { Sparkles, ShieldCheck, Truck, PhoneCall, MessageCircle, ShoppingBag, Globe, Filter } from 'lucide-react';
 import { getActiveVastuPosters } from '../data/vastuPosters';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import VastuPosterCard from '../components/VastuPosterCard';
 import './VastuPosters.css';
 
 const SKELETON_COUNT = 6;
 
+const filterCategories = [
+  { id: 'all', key: 'filterAll' },
+  { id: 'vastu', key: 'filterVastu' },
+  { id: 'numerology', key: 'filterNumerology' },
+  { id: 'relationships', key: 'filterRelationships' },
+  { id: 'career', key: 'filterCareer' },
+  { id: 'education', key: 'filterEducation' },
+  { id: 'finance', key: 'filterFinance' },
+  { id: 'health', key: 'filterHealth' },
+  { id: 'property', key: 'filterProperty' },
+  { id: 'business', key: 'filterBusiness' },
+];
+
+const getCategoriesForPoster = (poster) => {
+  const cats = ['vastu'];
+  const name = poster.name.toLowerCase();
+  
+  if (name.includes('health') || name.includes('santhanam')) cats.push('health');
+  if (name.includes('marriage') || name.includes('wife') || name.includes('family') || name.includes('relation')) cats.push('relationships');
+  if (name.includes('job')) cats.push('career');
+  if (name.includes('education') || name.includes('creativity')) cats.push('education');
+  if (name.includes('loan') || name.includes('horses') || name.includes('money')) cats.push('finance');
+  if (name.includes('property') || name.includes('house') || name.includes('car')) cats.push('property');
+  if (name.includes('business')) cats.push('business');
+  if (name.includes('angel') || name.includes('numero')) cats.push('numerology');
+  
+  return cats;
+};
+
 const VastuPosters = () => {
   const [posters, setPosters] = useState([]);
   const [loading, setLoading] = useState(true);
   const { cartCount, cartItems } = useCart();
+  const { lang, changeLanguage, t } = useLanguage();
   const [cartOpen, setCartOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [filterMenuOpen, setFilterMenuOpen] = useState(false);
 
   // Lazy import CartDrawer to avoid circular issues
   const [CartDrawer, setCartDrawer] = useState(null);
@@ -31,6 +64,11 @@ const VastuPosters = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const filteredPosters = useMemo(() => {
+    if (activeFilter === 'all') return posters;
+    return posters.filter(p => getCategoriesForPoster(p).includes(activeFilter));
+  }, [posters, activeFilter]);
+
   return (
     <div className="page-wrapper vp-page">
       {/* Hero Section */}
@@ -38,9 +76,9 @@ const VastuPosters = () => {
         <div className="container">
           <div className="vp-hero__content animate-fade-up">
             <span className="vp-hero__badge">
-              <Sparkles size={15} /> Vastu Posters & Remedies
+              <Sparkles size={15} /> {t('vastuPosters')}
             </span>
-            <h1 className="vp-hero__title">Sacred Vastu Posters</h1>
+            <h1 className="vp-hero__title">Sacred {t('vastuPosters')}</h1>
             <p className="vp-hero__subtitle">
               Energized remedy posters rooted in Vastu Shastra — designed to harmonize your home,
               attract blessings, and remove energy blockages from every corner of your life.
@@ -84,15 +122,38 @@ const VastuPosters = () => {
         </div>
       )}
 
+      {/* Control Bar (Language & Filters) */}
+      <div className="vp-controls">
+        <div className="container vp-controls-container">
+          <div className="vp-filter-group">
+            <div className="vp-filter-mobile-toggle" onClick={() => setFilterMenuOpen(!filterMenuOpen)}>
+              <Filter size={16} /> {t('filter')}: {t(filterCategories.find(c => c.id === activeFilter).key)}
+            </div>
+            <div className={`vp-filter-buttons ${filterMenuOpen ? 'open' : ''}`}>
+              {filterCategories.map(cat => (
+                <button
+                  key={cat.id}
+                  className={`vp-filter-btn ${activeFilter === cat.id ? 'active' : ''}`}
+                  onClick={() => { setActiveFilter(cat.id); setFilterMenuOpen(false); }}
+                >
+                  {t(cat.key)}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          <div className="vp-language-switch">
+            <Globe size={16} />
+            <button className={`vp-lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => changeLanguage('en')}>English</button>
+            <span className="vp-lang-sep">|</span>
+            <button className={`vp-lang-btn ${lang === 'te' ? 'active' : ''}`} onClick={() => changeLanguage('te')}>తెలుగు</button>
+          </div>
+        </div>
+      </div>
+
       {/* Posters Grid Section */}
       <section className="vp-products-section">
         <div className="container">
-          <div className="vp-section-header">
-            <h2 className="vp-section-title">All Vastu Posters</h2>
-            <p className="vp-section-subtitle">
-              Select any poster, choose your quantity, and add to cart.
-            </p>
-          </div>
 
           {loading ? (
             /* Skeleton Loading */
@@ -110,15 +171,14 @@ const VastuPosters = () => {
                 </div>
               ))}
             </div>
-          ) : posters.length === 0 ? (
+          ) : filteredPosters.length === 0 ? (
             <div className="vp-empty-state">
               <span className="vp-empty-icon">🖼️</span>
-              <h3>No Vastu Posters Available</h3>
-              <p>Our poster collection is being updated. Please check back soon.</p>
+              <h3>{t('noPosters')}</h3>
             </div>
           ) : (
             <div className="vp-grid">
-              {posters.map((poster, idx) => (
+              {filteredPosters.map((poster, idx) => (
                 <VastuPosterCard
                   key={poster.id}
                   poster={poster}

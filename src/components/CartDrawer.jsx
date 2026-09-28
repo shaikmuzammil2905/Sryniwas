@@ -1,10 +1,12 @@
 import React from 'react';
 import { X, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import './CartDrawer.css';
 
 const CartDrawer = ({ isOpen, onClose }) => {
   const { cartItems, cartTotal, updateQuantity, removeFromCart } = useCart();
+  const { lang, t } = useLanguage();
 
   return (
     <>
@@ -20,7 +22,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
         <div className="cart-drawer__header">
           <div className="cart-drawer__title">
             <ShoppingBag size={20} />
-            <span>Your Cart</span>
+            <span>{lang === 'te' ? 'మీ కార్ట్' : 'Your Cart'}</span>
             {cartItems.length > 0 && (
               <span className="cart-drawer__count-badge">{cartItems.reduce((s, i) => s + i.quantity, 0)}</span>
             )}
@@ -39,8 +41,8 @@ const CartDrawer = ({ isOpen, onClose }) => {
           {cartItems.length === 0 ? (
             <div className="cart-drawer__empty">
               <ShoppingBag size={52} className="cart-drawer__empty-icon" />
-              <p>Your cart is empty</p>
-              <span>Add Vastu Posters to get started</span>
+              <p>{lang === 'te' ? 'మీ కార్ట్ ఖాళీగా ఉంది' : 'Your cart is empty'}</p>
+              <span>{lang === 'te' ? 'ప్రారంభించడానికి వాస్తు పోస్టర్లను జోడించండి' : 'Add Vastu Posters to get started'}</span>
             </div>
           ) : (
             <ul className="cart-drawer__list">
@@ -54,15 +56,15 @@ const CartDrawer = ({ isOpen, onClose }) => {
                       onError={e => { e.target.src = '/image copy 2.png'; }}
                     />
                   </div>
-                  <div className="cart-item__info">
-                    <h4 className="cart-item__name">{item.productName}</h4>
-                    {item.location && (
-                      <p className="cart-item__location">📍 {item.location}</p>
-                    )}
-                    <div className="cart-item__price-row">
-                      <span className="cart-item__price">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
-                      <span className="cart-item__unit-price">(₹{item.price} each)</span>
-                    </div>
+                    <div className="cart-item__info">
+                      <h4 className="cart-item__name">{lang === 'te' && item.nameTe ? item.nameTe : item.productName}</h4>
+                      {item.location && (
+                        <p className="cart-item__location">📍 {lang === 'te' && item.locationTe ? item.locationTe : item.location}</p>
+                      )}
+                      <div className="cart-item__price-row">
+                        <span className="cart-item__price">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                        <span className="cart-item__unit-price">(₹{item.price} {lang === 'te' ? 'ఒక్కొక్కటి' : 'each'})</span>
+                      </div>
                     <div className="cart-item__controls">
                       <div className="cart-item__qty">
                         <button
@@ -102,7 +104,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
         {cartItems.length > 0 && (
           <div className="cart-drawer__footer">
             <div className="cart-drawer__total-row">
-              <span>Total</span>
+              <span>{t('total')}</span>
               <span className="cart-drawer__total-amount">₹{cartTotal.toLocaleString('en-IN')}</span>
             </div>
             <a
@@ -115,7 +117,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
               rel="noreferrer"
               className="btn btn-whatsapp cart-checkout-btn"
             >
-              Order via WhatsApp
+              {t('orderViaWhatsapp')}
             </a>
             <p className="cart-drawer__footer-note">
               Secure order via WhatsApp • COD & Online Payment Available

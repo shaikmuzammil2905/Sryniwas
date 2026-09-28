@@ -1,4 +1,4 @@
-// Vastu Posters Data
+﻿// Vastu Posters Data
 // This is the canonical data source for Vastu Posters.
 // Admin can override values via localStorage (key: 'vastuPostersData').
 
@@ -363,3 +363,4 @@ export const getFormSubmissions = () => {
 export const generatePosterId = () => {
   return `vp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 };
+

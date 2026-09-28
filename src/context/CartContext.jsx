@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useLanguage } from './LanguageContext';
 
 const CartContext = createContext(null);
 
@@ -18,6 +19,7 @@ const saveCart = (items) => {
 };
 
 export const CartProvider = ({ children }) => {
+  const { lang, t } = useLanguage();
   const [cartItems, setCartItems] = useState(loadCart);
   const [toastMessage, setToastMessage] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
@@ -36,29 +38,35 @@ export const CartProvider = ({ children }) => {
     const qty = quantity < 1 ? 1 : quantity;
     setCartItems(prev => {
       const existing = prev.find(item => item.productId === product.id);
+      const name = lang === 'te' && product.nameTe ? product.nameTe : product.name;
+      const actionTxt = lang === 'te' ? 'కార్ట్కు జోడించబడింది' : 'added to cart';
+      const updatedTxt = lang === 'te' ? 'కార్ట్‌లో నవీకరించబడింది' : 'quantity updated in cart';
+
       if (existing) {
         const updated = prev.map(item =>
           item.productId === product.id
             ? { ...item, quantity: item.quantity + qty }
             : item
         );
-        showToast(`"${product.name}" quantity updated in cart`);
+        showToast(`"${name}" ${updatedTxt}`);
         return updated;
       } else {
-        showToast(`"${product.name}" added to cart`);
+        showToast(`"${name}" ${actionTxt}`);
         return [...prev, {
           productId: product.id,
           productName: product.name,
+          nameTe: product.nameTe,
           image: product.image,
           price: product.price,
           quantity: qty,
           location: product.location,
+          locationTe: product.locationTe,
           productType: product.productType || 'VASTU_POSTER',
           slug: product.slug,
         }];
       }
     });
-  }, [showToast]);
+  }, [showToast, lang]);
 
   const updateQuantity = useCallback((productId, quantity) => {
     if (quantity < 1) {
@@ -75,10 +83,14 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = useCallback((productId) => {
     setCartItems(prev => {
       const item = prev.find(i => i.productId === productId);
-      if (item) showToast(`"${item.productName}" removed from cart`);
+      if (item) {
+        const name = lang === 'te' && item.nameTe ? item.nameTe : item.productName;
+        const rmTxt = lang === 'te' ? 'కార్ట్ నుండి తీసివేయబడింది' : 'removed from cart';
+        showToast(`"${name}" ${rmTxt}`);
+      }
       return prev.filter(item => item.productId !== productId);
     });
-  }, [showToast]);
+  }, [showToast, lang]);
 
   const clearCart = useCallback(() => {
     setCartItems([]);

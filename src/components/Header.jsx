@@ -25,7 +25,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <Link to="/" className="logo-link">
-          <img src="/image copy 2.png" alt="The Vastu Guru" className="header-logo" />
+          <img src="/logo.png" alt="The Vastu Guru" className="header-logo" />
         </Link>
 
         {/* Desktop Navigation */}

@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, ShoppingCart, Plus, Minus, Eye } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import './VastuPosterCard.css';
 
 const VastuPosterCard = ({ poster, style }) => {
   const { addToCart } = useCart();
+  const { lang, t } = useLanguage();
   const [quantity, setQuantity] = useState(0);
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [adding, setAdding] = useState(false);
+
+  const displayName = lang === 'te' && poster.nameTe ? poster.nameTe : poster.name;
+  const displayLocation = lang === 'te' && poster.locationTe ? poster.locationTe : poster.location;
+  const displayDescription = lang === 'te' && poster.descriptionTe ? poster.descriptionTe : poster.description;
 
   const handleDecrement = () => {
     setQuantity(prev => Math.max(0, prev - 1));
@@ -28,7 +34,7 @@ const VastuPosterCard = ({ poster, style }) => {
   };
 
   return (
-    <article className="vp-card" style={style} aria-label={`Vastu Poster: ${poster.name}`}>
+    <article className="vp-card" style={style} aria-label={`Vastu Poster: ${displayName}`}>
       {/* Image Section */}
       <div className="vp-card__image-wrap">
         <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__image-link" tabIndex={-1}>
@@ -43,7 +49,7 @@ const VastuPosterCard = ({ poster, style }) => {
           ) : (
             <img
               src={poster.image}
-              alt={poster.name}
+              alt={displayName}
               className={`vp-card__img ${imgLoaded ? 'vp-card__img--loaded' : ''}`}
               loading="lazy"
               onLoad={() => setImgLoaded(true)}
@@ -54,22 +60,22 @@ const VastuPosterCard = ({ poster, style }) => {
 
         {/* View Details Button on Hover */}
         <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__view-btn" tabIndex={0}>
-          <Eye size={14} /> View Details
+          <Eye size={14} /> {t('viewDetails')}
         </Link>
       </div>
 
       {/* Card Body */}
       <div className="vp-card__body">
         <h3 className="vp-card__name">
-          <Link to={`/vastu-posters/${poster.slug}`}>{poster.name}</Link>
+          <Link to={`/vastu-posters/${poster.slug}`}>{displayName}</Link>
         </h3>
 
         <div className="vp-card__location">
           <MapPin size={13} />
-          <span>{poster.location}</span>
+          <span>{displayLocation}</span>
         </div>
 
-        <p className="vp-card__description">{poster.description}</p>
+        <p className="vp-card__description">{displayDescription}</p>
 
         <div className="vp-card__footer">
           {/* Price */}
@@ -107,10 +113,10 @@ const VastuPosterCard = ({ poster, style }) => {
               type="button"
               className={`vp-card__cart-btn ${adding ? 'vp-card__cart-btn--added' : ''}`}
               onClick={handleAddToCart}
-              aria-label={`Add ${poster.name} to cart`}
+              aria-label={`Add ${displayName} to cart`}
             >
               <ShoppingCart size={15} />
-              <span>{adding ? 'Added' : 'Add'}</span>
+              <span>{adding ? t('added') : t('add')}</span>
             </button>
           </div>
         </div>
