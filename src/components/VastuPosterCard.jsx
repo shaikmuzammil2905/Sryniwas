@@ -37,6 +37,11 @@ const VastuPosterCard = ({ poster, style }) => {
     <article className="vp-card" style={style} aria-label={`Vastu Poster: ${displayName}`}>
       {/* Image Section */}
       <div className="vp-card__image-wrap">
+        <div 
+          className="vp-card__img-blur-bg" 
+          style={{ backgroundImage: `url(${poster.image})` }} 
+          aria-hidden="true"
+        />
         <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__image-link" tabIndex={-1}>
           {!imgLoaded && !imgError && (
             <div className="vp-card__img-skeleton" aria-hidden="true" />

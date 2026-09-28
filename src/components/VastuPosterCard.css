@@ -25,10 +25,27 @@
   background: #fff;
   height: 280px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vp-card__img-blur-bg {
+  position: absolute;
+  inset: -30px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.7);
+  z-index: 1;
+  opacity: 0.8;
 }
 
 .vp-card__image-link {
-  display: block;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
@@ -82,6 +99,7 @@
   position: absolute;
   bottom: 10px;
   left: 50%;
+  z-index: 3;
   transform: translateX(-50%) translateY(10px);
   display: inline-flex;
   align-items: center;

@@ -1,4 +1,4 @@
-﻿// Vastu Posters Data
+// Vastu Posters Data
 // This is the canonical data source for Vastu Posters.
 // Admin can override values via localStorage (key: 'vastuPostersData').
 
@@ -276,7 +276,12 @@ export const getVastuPosters = () => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Merge with defaults so new fields (like nameTe) are available if the cache is old
+      return parsed.map(savedItem => {
+        const defaultItem = defaultVastuPostersData.find(d => d.id === savedItem.id);
+        return { ...defaultItem, ...savedItem };
+      });
     }
   } catch {
     // Fall through to defaults

@@ -108,6 +108,98 @@
   background: var(--color-primary-light);
 }
 
+/* ─── Controls (Filter & Language) ─────────────────────────────────────── */
+.vp-controls {
+  padding: 16px 0;
+  border-bottom: 1px solid #bdeaff;
+  background: #fdfdfd;
+}
+
+.vp-controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.vp-filter-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.vp-filter-mobile-toggle {
+  display: none; /* Only show on mobile */
+}
+
+.vp-filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vp-filter-btn {
+  background: #f0fbff;
+  border: 1px solid #cceeff;
+  color: #0e6b9e;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.vp-filter-btn:hover {
+  background: #e0f4ff;
+}
+
+.vp-filter-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.vp-language-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #cceeff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: #0e6b9e;
+  font-size: 14px;
+}
+
+.vp-lang-btn {
+  background: none;
+  border: none;
+  color: #0e6b9e;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  opacity: 0.6;
+  transition: opacity 0.2s, font-weight 0.2s;
+}
+
+.vp-lang-btn:hover {
+  opacity: 1;
+}
+
+.vp-lang-btn.active {
+  opacity: 1;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.vp-lang-sep {
+  opacity: 0.3;
+}
+
 /* ─── Section ───────────────────────────────────────────────────────────── */
 .vp-products-section {
   padding: 56px 0;
@@ -374,6 +466,42 @@
 
   .vp-benefits-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .vp-controls-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .vp-filter-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fbff;
+    border: 1px solid #cceeff;
+    color: #0e6b9e;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .vp-filter-buttons {
+    display: none;
+    width: 100%;
+    padding-top: 12px;
+    gap: 8px;
+  }
+  
+  .vp-filter-buttons.open {
+    display: flex;
+  }
+  
+  .vp-language-switch {
+    justify-content: center;
   }
 }
 
