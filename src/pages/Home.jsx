@@ -4,9 +4,12 @@ import { ChevronDown, ChevronUp, Search, Eye, Compass, HeartHandshake } from 'lu
 import { motion } from 'framer-motion';
 import { servicesData } from '../data/services';
 import { productsData } from '../data/products';
+import { getActiveVastuPosters } from '../data/vastuPosters';
 import ServiceCard from '../components/ServiceCard';
 import ProductCard from '../components/ProductCard';
+import VastuPosterCard from '../components/VastuPosterCard';
 import './Home.css';
+import './VastuPosters.css';
 
 const faqs = [
   { q: "What services does The Vastu Guru provide?", a: "We provide Vastu Consultation, Numerology, Mobile Numerology, Name Correction, Aura Analysis, Vastu Remedies, and Gemstone Guidance." },
@@ -170,6 +173,44 @@ const Home = () => {
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
             <Link to="/products" className="btn btn-primary" style={{ padding: '14px 36px', fontSize: '15px' }}>
               Explore All 19+ Sacred Products →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Vastu Posters Section */}
+      <section className="vastu-posters-home-section" style={{ padding: '70px 0', background: '#fff' }}>
+        <div className="container">
+          <motion.div 
+            className="section-header center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            style={{ marginBottom: '40px' }}
+          >
+            <motion.h2 className="section-title" variants={fadeInUp}>VASTU POSTERS</motion.h2>
+            <motion.p className="section-subtitle" variants={fadeInUp}>Sacred Remedy Posters</motion.p>
+            <motion.p className="section-desc" variants={fadeInUp} style={{ maxWidth: '640px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
+              Energized remedy posters designed to harmonize your home, attract blessings, and remove energy blockages.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="vp-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
+            {getActiveVastuPosters().slice(0, 4).map(poster => (
+              <VastuPosterCard key={poster.id} poster={poster} />
+            ))}
+          </motion.div>
+
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link to="/vastu-posters" className="btn btn-primary" style={{ padding: '14px 36px', fontSize: '15px' }}>
+              View All Vastu Posters →
             </Link>
           </div>
         </div>
