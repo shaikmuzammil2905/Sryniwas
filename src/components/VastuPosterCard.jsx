@@ -16,7 +16,7 @@ const VastuPosterCard = ({ poster, style }) => {
   };
 
   const handleIncrement = () => {
-    setQuantity(prev => prev + 1);
+    setQuantity(prev => (prev < 5 ? prev + 1 : prev));
   };
 
   const handleAddToCart = () => {
@@ -77,38 +77,42 @@ const VastuPosterCard = ({ poster, style }) => {
           <span className="vp-card__price-unit">per poster</span>
         </div>
 
-        {/* Quantity Selector */}
-        <div className="vp-card__quantity-row">
+        {/* Actions Row */}
+        <div className="vp-card__actions-row">
+          {/* Quantity Selector */}
+          <div className="vp-card__quantity-row">
+            <button
+              type="button"
+              className="vp-qty-btn"
+              onClick={handleDecrement}
+              aria-label="Decrease quantity"
+              disabled={quantity <= 0}
+            >
+              <Minus size={12} />
+            </button>
+            <span className="vp-qty-value">{quantity}</span>
+            <button
+              type="button"
+              className="vp-qty-btn"
+              onClick={handleIncrement}
+              aria-label="Increase quantity"
+              disabled={quantity >= 5}
+            >
+              <Plus size={12} />
+            </button>
+          </div>
+
+          {/* Add to Cart Button */}
           <button
             type="button"
-            className="vp-qty-btn"
-            onClick={handleDecrement}
-            aria-label="Decrease quantity"
-            disabled={quantity <= 0}
+            className={`vp-card__cart-btn ${adding ? 'vp-card__cart-btn--added' : ''}`}
+            onClick={handleAddToCart}
+            aria-label={`Add ${poster.name} to cart`}
           >
-            <Minus size={12} />
-          </button>
-          <span className="vp-qty-value">{quantity}</span>
-          <button
-            type="button"
-            className="vp-qty-btn"
-            onClick={handleIncrement}
-            aria-label="Increase quantity"
-          >
-            <Plus size={12} />
+            <ShoppingCart size={15} />
+            <span>{adding ? 'Added' : 'Add'}</span>
           </button>
         </div>
-
-        {/* Add to Cart Button */}
-        <button
-          type="button"
-          className={`vp-card__cart-btn ${adding ? 'vp-card__cart-btn--added' : ''}`}
-          onClick={handleAddToCart}
-          aria-label={`Add ${poster.name} to cart`}
-        >
-          <ShoppingCart size={15} />
-          <span>{adding ? 'Added!' : 'Add to Cart'}</span>
-        </button>
       </div>
     </article>
   );
