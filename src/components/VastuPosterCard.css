@@ -23,7 +23,7 @@
   position: relative;
   overflow: hidden;
   background: #fff;
-  aspect-ratio: 3 / 4;
+  height: 280px;
   width: 100%;
 }
 
@@ -161,11 +161,16 @@
   overflow: hidden;
 }
 
+.vp-card__footer {
+  margin-top: auto;
+}
+
 /* Price */
 .vp-card__price-row {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  margin-bottom: 10px;
 }
 
 .vp-card__price {
