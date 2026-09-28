@@ -18,7 +18,6 @@ import VastuPostersAdmin from './pages/VastuPostersAdmin';
 import SplashScreen from './components/SplashScreen';
 import { CartProvider } from './context/CartContext';
 import { LanguageProvider } from './context/LanguageContext';
-import CartDrawer from './components/CartDrawer';
 import './index.css';
 
 const ScrollToTop = () => {
@@ -61,7 +60,6 @@ const App = () => {
           <MobileActionBar />
         </div>
       </CartProvider>
-        <CartDrawer />
       </Router>
     </LanguageProvider>
   );
