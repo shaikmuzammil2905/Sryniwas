@@ -12,7 +12,11 @@ import ProductDetail from './pages/ProductDetail';
 import WhyUs from './pages/WhyUs';
 import Contact from './pages/Contact';
 import BookConsultation from './pages/BookConsultation';
+import VastuPosters from './pages/VastuPosters';
+import VastuPosterDetail from './pages/VastuPosterDetail';
+import VastuPostersAdmin from './pages/VastuPostersAdmin';
 import SplashScreen from './components/SplashScreen';
+import { CartProvider } from './context/CartContext';
 import './index.css';
 
 const ScrollToTop = () => {
@@ -28,27 +32,32 @@ const App = () => {
 
   return (
     <Router>
-      {loading && <SplashScreen finishLoading={() => setLoading(false)} />}
+      <CartProvider>
+        {loading && <SplashScreen finishLoading={() => setLoading(false)} />}
 
-      <ScrollToTop />
-      <div className="app-container">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/:id" element={<ServiceDetail />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/why-us" element={<WhyUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/book-consultation" element={<BookConsultation />} />
-          </Routes>
-        </main>
-        <Footer />
-        <MobileActionBar />
-      </div>
+        <ScrollToTop />
+        <div className="app-container">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:id" element={<ServiceDetail />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/why-us" element={<WhyUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/book-consultation" element={<BookConsultation />} />
+              <Route path="/vastu-posters" element={<VastuPosters />} />
+              <Route path="/vastu-posters/:slug" element={<VastuPosterDetail />} />
+              <Route path="/admin/vastu-posters" element={<VastuPostersAdmin />} />
+            </Routes>
+          </main>
+          <Footer />
+          <MobileActionBar />
+        </div>
+      </CartProvider>
     </Router>
   );
 };
