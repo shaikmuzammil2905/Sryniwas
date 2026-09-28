@@ -19,7 +19,7 @@
 /* Image Container */
 .product-card-image-wrap {
   width: 100%;
-  aspect-ratio: 1 / 0.85; /* responsive height matching previous padding-top 85% */
+  height: 220px;
   background: #ffffff;
   padding: 14px;
   display: flex;
