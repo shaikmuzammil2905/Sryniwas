@@ -82,7 +82,7 @@
 
 .product-main-image-card {
   position: relative;
-  background: linear-gradient(135deg, #f7fcff 0%, #edf7fc 100%);
+  background: #ffffff;
   border-radius: 14px;
   border: 1px solid #e1eff8;
   padding: 30px;
