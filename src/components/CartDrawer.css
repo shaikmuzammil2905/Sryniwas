@@ -353,5 +353,19 @@
 @media (max-width: 480px) {
   .cart-drawer {
     max-width: 100%;
+    /* Let the drawer content flow naturally from top to bottom */
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  
+  .cart-drawer__body {
+    /* Do not stretch to push footer down */
+    flex: none;
+    overflow-y: visible;
+  }
+  
+  .cart-drawer__footer {
+    /* Provide safe space for the fixed bottom navigation (Call | WhatsApp | Book Now) */
+    padding-bottom: calc(85px + env(safe-area-inset-bottom));
   }
 }
