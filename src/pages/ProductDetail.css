@@ -73,6 +73,13 @@
   }
 }
 
+@media (max-width: 480px) {
+  .product-showcase-grid {
+    padding: 16px;
+    gap: 24px;
+  }
+}
+
 /* Left Image Pane */
 .product-gallery-pane {
   display: flex;
