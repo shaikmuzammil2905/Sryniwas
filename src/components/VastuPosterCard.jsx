@@ -5,19 +5,25 @@ import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 import './VastuPosterCard.css';
 
-const VastuPosterCard = ({ poster, style }) => {
+const VastuPosterCard = ({ poster, style, isActive, onToggle }) => {
   const { addToCart } = useCart();
   const { lang, t } = useLanguage();
   const [quantity, setQuantity] = useState(0);
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [adding, setAdding] = useState(false);
-  const [isBlurred, setIsBlurred] = useState(true);
+  const [localIsBlurred, setLocalIsBlurred] = useState(true);
+
+  const isBlurred = isActive !== undefined ? !isActive : localIsBlurred;
 
   const toggleBlur = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsBlurred(!isBlurred);
+    if (onToggle) {
+      onToggle();
+    } else {
+      setLocalIsBlurred(!localIsBlurred);
+    }
   };
 
   const displayName = lang === 'te' && poster.nameTe ? poster.nameTe : poster.name;

@@ -39,6 +39,7 @@ const staggerContainer = {
 
 const Home = () => {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activePosterId, setActivePosterId] = useState(null);
 
   return (
     <div className="page-wrapper">
@@ -204,7 +205,12 @@ const Home = () => {
             variants={staggerContainer}
           >
             {getActiveVastuPosters().slice(0, 4).map(poster => (
-              <VastuPosterCard key={poster.id} poster={poster} />
+              <VastuPosterCard 
+                key={poster.id} 
+                poster={poster} 
+                isActive={activePosterId === poster.id}
+                onToggle={() => setActivePosterId(activePosterId === poster.id ? null : poster.id)}
+              />
             ))}
           </motion.div>
 
