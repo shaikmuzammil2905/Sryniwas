@@ -192,3 +192,32 @@ ul {
     scroll-behavior: auto !important;
   }
 }
+
+/* Blurs all product card images while keeping the card sharp */
+.product-card,
+.card,
+.vp-card,
+.product-image-container,
+.vp-image-wrapper {
+  overflow: hidden;
+}
+
+.product-card img,
+.card img,
+.vp-card img,
+.product-image-container img,
+.vp-image-wrapper img {
+  filter: blur(5px);
+  transform: scale(1.03); /* Prevents blurred edges from leaking into the container */
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: remove blur when the user hovers */
+.product-card img:hover,
+.card img:hover,
+.vp-card img:hover,
+.product-image-container img:hover,
+.vp-image-wrapper img:hover {
+  filter: blur(0);
+  transform: scale(1);
+}
