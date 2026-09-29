@@ -108,15 +108,16 @@
   max-height: 380px;
   object-fit: contain;
   transition: transform var(--transition-normal), filter var(--transition-normal);
-  opacity: 0.82;
-  filter: blur(5px);
-  transform: scale(1.03);
+  opacity: 1;
+}
+
+.product-detail-img.is-bracelet {
+  filter: brightness(1.2);
 }
 
 .product-main-image-card:hover .product-detail-img,
 .product-main-image-card:active .product-detail-img {
   transform: scale(1.05);
-  filter: blur(0);
 }
 
 .product-detail-badges {

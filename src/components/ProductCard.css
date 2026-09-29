@@ -62,8 +62,11 @@
 }
 
 .product-card-img.loaded {
-  opacity: 0.82;
-  filter: blur(4px) brightness(1.12) contrast(0.88);
+  opacity: 1;
+}
+
+.product-card-img.loaded.is-bracelet {
+  filter: brightness(1.2);
 }
 
 .product-card:hover .product-card-img {

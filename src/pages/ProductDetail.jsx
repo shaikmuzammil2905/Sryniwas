@@ -111,7 +111,7 @@ const ProductDetail = () => {
               <img 
                 src={imgError ? '/image copy 2.png' : product.image} 
                 alt={product.name} 
-                className="product-detail-img"
+                className={`product-detail-img ${product.name.toLowerCase().includes('bracelet') ? 'is-bracelet' : ''}`}
                 onError={() => setImgError(true)}
               />
 

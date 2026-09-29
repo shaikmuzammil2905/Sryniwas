@@ -23,7 +23,7 @@ const ProductCard = ({ product, onQuickView }) => {
           <img
             src={imgError ? '/image copy 2.png' : product.image}
             alt={product.name}
-            className={`product-card-img ${imgLoaded ? 'loaded' : ''}`}
+            className={`product-card-img ${imgLoaded ? 'loaded' : ''} ${product.name.toLowerCase().includes('bracelet') ? 'is-bracelet' : ''}`}
             loading="lazy"
             onLoad={() => setImgLoaded(true)}
             onError={() => setImgError(true)}
