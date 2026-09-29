@@ -240,10 +240,12 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
   .vp-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    width: 100%;
+    max-width: 100%;
   }
 }
 

@@ -54,6 +54,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -64,6 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   width: 100%;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -179,7 +181,7 @@ ul {
 .page-wrapper {
   animation: fadeIn var(--transition-normal) forwards;
   min-height: calc(100vh - var(--header-height));
-  padding-bottom: 80px; /* Space for mobile action bar */
+  padding-bottom: 120px; /* Space for mobile action bar */
 }
 
 @media (min-width: 768px) {

@@ -2,7 +2,7 @@
 .product-not-found-page {
   background-color: #fafcfd;
   padding-top: var(--mobile-header-height, 64px);
-  padding-bottom: 70px;
+  padding-bottom: 120px; /* Space for mobile action bar */
 }
 
 @media (min-width: 992px) {
@@ -101,6 +101,9 @@
 }
 
 .product-detail-img {
+  width: 100%;
+  height: auto;
+  min-height: 250px;
   max-width: 100%;
   max-height: 380px;
   object-fit: contain;
