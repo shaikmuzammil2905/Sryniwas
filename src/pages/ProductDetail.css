@@ -178,6 +178,8 @@
 .product-info-pane {
   display: flex;
   flex-direction: column;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .product-header-row {
@@ -185,6 +187,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .btn-share-product {
@@ -253,7 +257,8 @@
 
 .stock-status-pill {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 6px;
   font-size: 12px;
   font-weight: 600;
@@ -376,6 +381,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text-dark);
+  flex-wrap: wrap;
 }
 
 .quantity-counter {
@@ -437,6 +443,7 @@
 .secondary-action-row {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .btn-call-expert {
