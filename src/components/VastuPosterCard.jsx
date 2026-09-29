@@ -12,6 +12,13 @@ const VastuPosterCard = ({ poster, style }) => {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [adding, setAdding] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(true);
+
+  const toggleBlur = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsBlurred(!isBlurred);
+  };
 
   const displayName = lang === 'te' && poster.nameTe ? poster.nameTe : poster.name;
   const displayLocation = lang === 'te' && poster.locationTe ? poster.locationTe : poster.location;
@@ -42,7 +49,14 @@ const VastuPosterCard = ({ poster, style }) => {
           style={{ backgroundImage: `url(${poster.image})` }} 
           aria-hidden="true"
         />
-        <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__image-link" tabIndex={-1}>
+        <div 
+          className="vp-card__image-link" 
+          tabIndex={0}
+          onClick={toggleBlur}
+          role="button"
+          aria-label={isBlurred ? "Click to view clear image" : "Click to blur image"}
+          style={{ cursor: 'pointer' }}
+        >
           {!imgLoaded && !imgError && (
             <div className="vp-card__img-skeleton" aria-hidden="true" />
           )}
@@ -56,12 +70,18 @@ const VastuPosterCard = ({ poster, style }) => {
               src={poster.image}
               alt={displayName}
               className={`vp-card__img ${imgLoaded ? 'vp-card__img--loaded' : ''}`}
+              style={{ 
+                filter: isBlurred 
+                  ? 'blur(8px) drop-shadow(0 12px 24px rgba(0,0,0,0.5))' 
+                  : 'blur(0px) drop-shadow(0 12px 24px rgba(0,0,0,0.5))',
+                transition: 'filter 0.3s ease, opacity 0.4s ease, transform 0.4s ease'
+              }}
               loading="lazy"
               onLoad={() => setImgLoaded(true)}
               onError={() => { setImgError(true); setImgLoaded(true); }}
             />
           )}
-        </Link>
+        </div>
 
         {/* View Details Button on Hover */}
         <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__view-btn" tabIndex={0}>
