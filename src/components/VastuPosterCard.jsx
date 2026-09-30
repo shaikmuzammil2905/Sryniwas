@@ -5,26 +5,13 @@ import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 import './VastuPosterCard.css';
 
-const VastuPosterCard = ({ poster, style, isActive, onToggle }) => {
+const VastuPosterCard = ({ poster, style }) => {
   const { addToCart } = useCart();
   const { lang, t } = useLanguage();
   const [quantity, setQuantity] = useState(0);
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [adding, setAdding] = useState(false);
-  const [localIsBlurred, setLocalIsBlurred] = useState(true);
-
-  const isBlurred = isActive !== undefined ? !isActive : localIsBlurred;
-
-  const toggleBlur = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (onToggle) {
-      onToggle();
-    } else {
-      setLocalIsBlurred(!localIsBlurred);
-    }
-  };
 
   const displayName = lang === 'te' && poster.nameTe ? poster.nameTe : poster.name;
   const displayLocation = lang === 'te' && poster.locationTe ? poster.locationTe : poster.location;
@@ -55,14 +42,7 @@ const VastuPosterCard = ({ poster, style, isActive, onToggle }) => {
           style={{ backgroundImage: `url(${poster.image})` }} 
           aria-hidden="true"
         />
-        <div 
-          className="vp-card__image-link" 
-          tabIndex={0}
-          onClick={toggleBlur}
-          role="button"
-          aria-label={isBlurred ? "Click to view clear image" : "Click to blur image"}
-          style={{ cursor: 'pointer' }}
-        >
+        <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__image-link" tabIndex={-1}>
           {!imgLoaded && !imgError && (
             <div className="vp-card__img-skeleton" aria-hidden="true" />
           )}
@@ -77,17 +57,14 @@ const VastuPosterCard = ({ poster, style, isActive, onToggle }) => {
               alt={displayName}
               className={`vp-card__img ${imgLoaded ? 'vp-card__img--loaded' : ''}`}
               style={{ 
-                filter: isBlurred 
-                  ? 'blur(8px) drop-shadow(0 12px 24px rgba(0,0,0,0.5))' 
-                  : 'blur(0px) drop-shadow(0 12px 24px rgba(0,0,0,0.5))',
-                transition: 'filter 0.3s ease, opacity 0.4s ease, transform 0.4s ease'
+                filter: 'blur(8px) drop-shadow(0 12px 24px rgba(0,0,0,0.5))'
               }}
               loading="lazy"
               onLoad={() => setImgLoaded(true)}
               onError={() => { setImgError(true); setImgLoaded(true); }}
             />
           )}
-        </div>
+        </Link>
 
         {/* View Details Button on Hover */}
         <Link to={`/vastu-posters/${poster.slug}`} className="vp-card__view-btn" tabIndex={0}>

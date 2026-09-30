@@ -45,7 +45,6 @@ const VastuPosters = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
-  const [activePosterId, setActivePosterId] = useState(null);
 
   // Lazy import CartDrawer to avoid circular issues
   const [CartDrawer, setCartDrawer] = useState(null);
@@ -184,8 +183,6 @@ const VastuPosters = () => {
                   key={poster.id}
                   poster={poster}
                   style={{ animationDelay: `${idx * 0.06}s` }}
-                  isActive={activePosterId === poster.id}
-                  onToggle={() => setActivePosterId(activePosterId === poster.id ? null : poster.id)}
                 />
               ))}
             </div>

@@ -20,7 +20,6 @@ const VastuPosterDetail = () => {
   const [copiedLink, setCopiedLink] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [CartDrawer, setCartDrawer] = useState(null);
-  const [isBlurred, setIsBlurred] = useState(true);
 
   const poster = getVastuPosterBySlug(slug);
   const allPosters = getActiveVastuPosters().filter(p => p.id !== poster?.id).slice(0, 4);
@@ -85,13 +84,7 @@ const VastuPosterDetail = () => {
         <div className="vpd-showcase__grid">
           {/* Left: Image */}
           <div className="vpd-gallery animate-fade-up">
-            <div 
-              className="vpd-main-image-wrap"
-              onClick={() => setIsBlurred(!isBlurred)}
-              style={{ cursor: 'pointer' }}
-              role="button"
-              aria-label={isBlurred ? "Click to view clear image" : "Click to blur image"}
-            >
+            <div className="vpd-main-image-wrap">
               {!imgLoaded && !imgError && (
                 <div className="vpd-img-skeleton" aria-hidden="true" />
               )}
@@ -106,8 +99,7 @@ const VastuPosterDetail = () => {
                   alt={poster.name}
                   className={`vpd-main-img ${imgLoaded ? 'vpd-main-img--loaded' : ''}`}
                   style={{ 
-                    filter: isBlurred ? 'blur(10px)' : 'blur(0px)',
-                    transition: 'filter 0.3s ease'
+                    filter: 'blur(10px)'
                   }}
                   onLoad={() => setImgLoaded(true)}
                   onError={() => { setImgError(true); setImgLoaded(true); }}
